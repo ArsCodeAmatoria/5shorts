@@ -1,5 +1,5 @@
 export const SCRIPT_SLUGS = [
-  "5-shorts",
+  "the-10th-door",
   "the-silent-room",
   "ascent",
   "transfer",
@@ -13,7 +13,7 @@ export function isScriptSlug(s: string): s is ScriptSlug {
 }
 
 const titles: Record<ScriptSlug, string> = {
-  "5-shorts": "5 Shorts",
+  "the-10th-door": "The 10th Door",
   "the-silent-room": "The Silent Room",
   ascent: "Ascent",
   transfer: "Transfer",

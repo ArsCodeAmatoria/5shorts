@@ -4,6 +4,7 @@ import { ArrowUpRight, Film, Mail, MapPin } from "lucide-react"
 import { notFound } from "next/navigation"
 
 import { CanadianMapleLeaf } from "@/components/marketing/canadian-maple-leaf"
+import { LogoHeightMeasure } from "@/components/marketing/logo-height-measure"
 import { PortfolioCard } from "@/components/marketing/portfolio-card"
 import { Reveal } from "@/components/marketing/reveal"
 import { LocalizedLink } from "@/components/localized-link"
@@ -52,24 +53,27 @@ export default async function HomePage({
       <section>
         <div className="relative mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-8 pt-6 sm:gap-12 sm:px-6 sm:pb-10 sm:pt-10 lg:gap-14 lg:pb-12 lg:pt-14">
           <Reveal>
-            <h1 className="flex w-full max-w-6xl flex-col leading-none">
-              <span
-                className={cn(
-                  heroLogo.className,
-                  "text-[clamp(3.75rem,17vw,11.5rem)] tracking-[-0.03em] text-foreground"
-                )}
-              >
-                5
-              </span>
-              <span
-                className={cn(
-                  heroLogo.className,
-                  "-mt-[0.04em] text-[clamp(3.75rem,17vw,11.5rem)] tracking-[-0.03em] text-foreground sm:-mt-[0.06em]"
-                )}
-              >
-                Shorts
-              </span>
-            </h1>
+            <div className="grid w-full max-w-6xl grid-cols-[auto_auto] items-stretch justify-items-start gap-3 overflow-visible sm:gap-4 md:gap-5">
+              <h1 className="flex w-fit min-h-0 min-w-0 max-w-full flex-col leading-none">
+                <span
+                  className={cn(
+                    heroLogo.className,
+                    "text-[clamp(5.5rem,28vw,17.5rem)] tracking-[-0.03em] text-foreground"
+                  )}
+                >
+                  5
+                </span>
+                <span
+                  className={cn(
+                    heroLogo.className,
+                    "-mt-[0.04em] text-[clamp(3.75rem,17vw,11.5rem)] tracking-[-0.03em] text-foreground sm:-mt-[0.06em]"
+                  )}
+                >
+                  Shorts
+                </span>
+              </h1>
+              <LogoHeightMeasure className="min-h-0" />
+            </div>
           </Reveal>
           <Reveal delay={0.06}>
             <div

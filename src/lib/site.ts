@@ -9,10 +9,10 @@ export const site = {
   },
   portfolio: [
     {
-      title: "5 Shorts",
-      href: "/scripts/5-shorts",
+      title: "The 10th Door",
+      href: "/scripts/the-10th-door",
       description:
-        "The anthology spine — five short films under one production banner.",
+        "Narration over visuals — the ladder of categories, and the door that is not a door.",
     },
     {
       title: "The Silent Room",
@@ -36,7 +36,7 @@ export const site = {
       title: "Deep Pockets",
       href: "/scripts/deep-pockets",
       description:
-        "In development — the fifth short; script still unwritten.",
+        "A pocket with no limit — street stop, courtroom, and what the law can’t measure.",
     },
   ] as const,
 }

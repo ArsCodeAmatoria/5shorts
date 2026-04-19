@@ -128,7 +128,7 @@ const en: Messages = {
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "Selected work",
     portfolioBlurb:
-      "The 5 Shorts anthology — The Silent Room, Ascent, Transfer, Deep Pockets, and the fifth still unwritten.",
+      "The 5 Shorts anthology — The 10th Door, The Silent Room, Ascent, Transfer, and Deep Pockets.",
     portfolioCta: "Full portfolio",
     aboutEyebrow: "About",
     aboutTitle: "Built around story first.",
@@ -219,7 +219,7 @@ const fr: Messages = {
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "Travaux choisis",
     portfolioBlurb:
-      "L’anthologie 5 Shorts — The Silent Room, Ascent, Transfer, Deep Pockets ; le cinquième reste à écrire.",
+      "L’anthologie 5 Shorts — The 10th Door, The Silent Room, Ascent, Transfer et Deep Pockets.",
     portfolioCta: "Portfolio complet",
     aboutEyebrow: "À propos",
     aboutTitle: "L’histoire d’abord.",
@@ -256,8 +256,8 @@ const fr: Messages = {
       "Chaque fiche ouvre la page scénario du court (texte intégral lorsqu’il est disponible).",
   },
   portfolioDescriptions: {
-    "/scripts/5-shorts":
-      "Le fil conducteur de l’anthologie — cinq courts sous une même bannière de production.",
+    "/scripts/the-10th-door":
+      "Narration sur images — l’échelle des catégories, et la porte qui n’en est pas une.",
     "/scripts/the-silent-room":
       "Une pièce de chambre contenue — pression, silence et ce que la pièce refuse d’oublier.",
     "/scripts/ascent":
@@ -265,7 +265,7 @@ const fr: Messages = {
     "/scripts/transfer":
       "Passage de relais, transit et l’instant où l’essentiel change de main.",
     "/scripts/deep-pockets":
-      "En développement — le cinquième court ; scénario encore à écrire.",
+      "Une poche sans fin — contrôle au tapis, tribunal, et ce que la loi ne peut pas mesurer.",
   },
 }
 
