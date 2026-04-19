@@ -1,0 +1,187 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* Plum + lilac pair only; :root = lilac field, .dark = plum field (see theme toggle). */
+
+@font-face {
+  font-family: "Maison Neue";
+  src: url("https://static1.squarespace.com/static/63a0d928935cf8620202540a/t/63a97a75590d6528d2d36cbd/1672051317236/MaisonNeueExtended-Book.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Lothian Sans XS";
+  src: url("https://static1.squarespace.com/static/63a0d928935cf8620202540a/t/63a9a6291342a6121c3b9e43/1672062505621/LothianSans-XS.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Bourrasque;
+  src: url("https://static1.squarespace.com/static/63a0d928935cf8620202540a/t/63b31709ea5a9573c405a9b0/1672681225189/Bourrasque-Regular.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Bourrasque;
+  src: url("https://static1.squarespace.com/static/63a0d928935cf8620202540a/t/63ab2f43cff29d5ad776ac4c/1672163139293/Bourrasque-45Ouest.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-plum: var(--plum);
+  --color-lilac: var(--lilac);
+  --font-sans: "Maison Neue", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Lothian Sans XS", "Maison Neue", ui-sans-serif, sans-serif;
+  --font-marquee: Bourrasque, ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --plum: #5b21b6;
+  --lilac: #ede9fe;
+}
+
+/* Light: lilac field, plum type */
+:root {
+  --background: var(--lilac);
+  --foreground: var(--plum);
+  --card: var(--lilac);
+  --card-foreground: var(--plum);
+  --popover: var(--lilac);
+  --popover-foreground: var(--plum);
+  --primary: var(--plum);
+  --primary-foreground: var(--lilac);
+  --secondary: var(--lilac);
+  --secondary-foreground: var(--plum);
+  --muted: var(--lilac);
+  --muted-foreground: color-mix(in oklch, var(--plum) 72%, var(--lilac));
+  --accent: var(--lilac);
+  --accent-foreground: var(--plum);
+  --destructive: var(--plum);
+  --destructive-foreground: var(--lilac);
+  --border: color-mix(in oklch, var(--plum) 22%, var(--lilac));
+  --input: var(--plum);
+  --ring: var(--plum);
+  --brand: var(--plum);
+  --brand-foreground: var(--lilac);
+  --chart-1: var(--plum);
+  --chart-2: var(--lilac);
+  --chart-3: var(--plum);
+  --chart-4: var(--lilac);
+  --chart-5: var(--plum);
+  --radius: 0.625rem;
+  --sidebar: var(--lilac);
+  --sidebar-foreground: var(--plum);
+  --sidebar-primary: var(--plum);
+  --sidebar-primary-foreground: var(--lilac);
+  --sidebar-accent: var(--lilac);
+  --sidebar-accent-foreground: var(--plum);
+  --sidebar-border: color-mix(in oklch, var(--plum) 22%, var(--lilac));
+  --sidebar-ring: var(--plum);
+}
+
+/* Dark: plum field, lilac type (theme toggle) */
+.dark {
+  --background: var(--plum);
+  --foreground: var(--lilac);
+  --card: var(--plum);
+  --card-foreground: var(--lilac);
+  --popover: var(--plum);
+  --popover-foreground: var(--lilac);
+  --primary: var(--lilac);
+  --primary-foreground: var(--plum);
+  --secondary: var(--plum);
+  --secondary-foreground: var(--lilac);
+  --muted: var(--plum);
+  --muted-foreground: color-mix(in oklch, var(--lilac) 78%, var(--plum));
+  --accent: var(--plum);
+  --accent-foreground: var(--lilac);
+  --destructive: var(--lilac);
+  --destructive-foreground: var(--plum);
+  --border: color-mix(in oklch, var(--lilac) 28%, var(--plum));
+  --input: var(--lilac);
+  --ring: var(--lilac);
+  --brand: var(--lilac);
+  --brand-foreground: var(--plum);
+  --chart-1: var(--lilac);
+  --chart-2: var(--plum);
+  --chart-3: var(--lilac);
+  --chart-4: var(--plum);
+  --chart-5: var(--lilac);
+  --sidebar: var(--plum);
+  --sidebar-foreground: var(--lilac);
+  --sidebar-primary: var(--lilac);
+  --sidebar-primary-foreground: var(--plum);
+  --sidebar-accent: var(--plum);
+  --sidebar-accent-foreground: var(--lilac);
+  --sidebar-border: color-mix(in oklch, var(--lilac) 28%, var(--plum));
+  --sidebar-ring: var(--lilac);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans antialiased;
+  }
+}
