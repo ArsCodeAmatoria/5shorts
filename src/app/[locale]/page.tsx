@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Archivo_Black, Fleur_De_Leah } from "next/font/google"
+import { Archivo_Black } from "next/font/google"
 import { ArrowUpRight, Film, Mail, MapPin } from "lucide-react"
 import { notFound } from "next/navigation"
 
@@ -14,11 +14,6 @@ import { site } from "@/lib/site"
 import { cn } from "@/lib/utils"
 
 const heroLogo = Archivo_Black({
-  subsets: ["latin"],
-  weight: "400",
-})
-
-const flowerMark = Fleur_De_Leah({
   subsets: ["latin"],
   weight: "400",
 })
@@ -91,34 +86,38 @@ export default async function HomePage({
               <CanadianMapleLeaf className="h-11 w-auto shrink-0 text-brand sm:h-14 lg:h-16" />
             </div>
           </Reveal>
-          <Reveal delay={0.1} className="max-w-4xl">
-            <p className="text-3xl font-medium leading-snug tracking-tight text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-              {dict.home.lead}{" "}
-              <span
-                className={cn(
-                  flowerMark.className,
-                  "inline-block align-baseline text-[clamp(2.25rem,6.5vw,4.25rem)] font-bold leading-none text-foreground"
-                )}
-                aria-hidden
-              >
-                *
-              </span>
-            </p>
-          </Reveal>
-          <Reveal delay={0.14} className="max-w-3xl">
-            <p className="text-xl leading-relaxed text-muted-foreground sm:text-2xl">
-              {dict.home.bio}{" "}
-              <span className="text-foreground">{site.person.name}</span> —{" "}
-              {dict.home.rolesClause}.
-            </p>
-          </Reveal>
-          <Reveal delay={0.16} className="max-w-3xl space-y-6">
-            <h2 className="text-sm font-semibold uppercase tracking-[0.32em] text-brand sm:text-base">
-              {dict.home.indieHeading}
-            </h2>
-            <div className="space-y-5 text-xl leading-relaxed text-muted-foreground sm:text-2xl">
-              <p>{dict.home.indieP1}</p>
-              <p>{dict.home.indieP2}</p>
+          <Reveal delay={0.1} className="max-w-4xl space-y-14 sm:space-y-16">
+            <div className="space-y-6">
+              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+                {dict.home.aboutFilms.heading}
+              </h2>
+              <div className="space-y-5 text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                {dict.home.aboutFilms.intro.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
+            </div>
+            {dict.home.aboutFilms.films.map((film) => (
+              <div key={film.title} className="space-y-4">
+                <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                  {film.title}
+                </h3>
+                <div className="space-y-4 text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                  {film.paragraphs.map((para, j) => (
+                    <p key={j}>{para}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <div className="space-y-4 border-t border-border pt-10 sm:pt-12">
+              <h3 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+                {dict.home.aboutFilms.finalNote.title}
+              </h3>
+              <div className="space-y-4 text-lg leading-relaxed text-muted-foreground sm:text-xl">
+                {dict.home.aboutFilms.finalNote.paragraphs.map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
             </div>
           </Reveal>
         </div>

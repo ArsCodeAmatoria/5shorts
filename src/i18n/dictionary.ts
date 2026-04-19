@@ -32,17 +32,18 @@ type Messages = {
     portfolio: string
     about: string
     contact: string
+    copyrightName: string
   }
   home: {
     heroLine1: string
     heroLine2: string
     heroLang: string
-    lead: string
-    bio: string
-    rolesClause: string
-    indieHeading: string
-    indieP1: string
-    indieP2: string
+    aboutFilms: {
+      heading: string
+      intro: readonly string[]
+      films: readonly { title: string; paragraphs: readonly string[] }[]
+      finalNote: { title: string; paragraphs: readonly string[] }
+    }
     portfolioEyebrow: string
     portfolioTitle: string
     portfolioBlurb: string
@@ -112,19 +113,66 @@ const en: Messages = {
     portfolio: "Portfolio",
     about: "About",
     contact: "Contact",
+    copyrightName: "A Thousand Cuts Films",
   },
   home: {
     heroLine1: "Independent film",
     heroLine2: "5 Shorts",
     heroLang: "en",
-    lead: "Production built for stories that stay under your skin.",
-    bio: "Character-first work with a sharp eye for tone and tension.",
-    rolesClause: site.person.roles.map((r) => r.toLowerCase()).join(", "),
-    indieHeading: "Indie features & shorts",
-    indieP1:
-      "We develop and produce indie features meant for the long haul—scripts that hold up in the room, on location, and in the cut. From psychological thrillers and grounded fantasy to music-driven drama, the work is built around clear premise, pressure, and subtext so every scene earns its place.",
-    indieP2:
-      "Shorts stay in rotation too: as proof-of-tone, as calling cards for collaborators, and as a way to test rhythm and voice before a bigger swing. Whether it's a contained forest night, a river-town musical, or a single corridor in a castle, the through-line is the same—independent spirit, disciplined craft, and stories that still bother you after the lights come up.",
+    aboutFilms: {
+      heading: "About the Films",
+      intro: [
+        "These five short films explore a single idea from five different angles:",
+        "What happens when reality stops behaving the way we expect it to?",
+        "Each story begins grounded—familiar spaces, recognizable emotions—before slipping into something uncertain, surreal, or quietly impossible. There are no explosions, no spectacle for its own sake. The tension lives in stillness, in implication, in what should make sense but doesn't.",
+        "This collection is designed to be minimal, deliberate, and unsettling in a way that lingers.",
+      ],
+      films: [
+        {
+          title: "The Silent Room",
+          paragraphs: [
+            "A woman returns to a room that refuses to acknowledge her presence. Time fractures. Sound disappears. The question becomes unavoidable: If the world stops responding to you… do you still exist within it?",
+            "A study in isolation, perception, and the thin line between absence and erasure.",
+          ],
+        },
+        {
+          title: "Ascent",
+          paragraphs: [
+            "Balloons rise. Effortlessly. Beautifully. Inevitably. Until they don't.",
+            "Told through motion and environment, Ascent traces the arc from lift to collapse—ending not in spectacle, but in quiet aftermath. A meditation on impermanence and the illusion of upward momentum.",
+          ],
+        },
+        {
+          title: "The 10th Door",
+          paragraphs: [
+            "A philosophical descent disguised as ascension. A journey through layers of reality—space, time, identity, and beyond—until there is nothing left to transcend.",
+            "At the threshold of the final “door,” the film confronts a paradox: What lies beyond everything… may be nothing at all.",
+          ],
+        },
+        {
+          title: "Deep Pockets",
+          paragraphs: [
+            "A routine search turns into an impossible event. Evidence without limit. Logic without footing.",
+            "As authority struggles to define what they're witnessing, the question shifts from legality to language itself: How do you measure something that has no end?",
+            "A dark absurdist piece about systems breaking under the weight of the unexplainable.",
+          ],
+        },
+        {
+          title: "Transfer",
+          paragraphs: [
+            "A moment passes between two people—simple, ordinary, unnoticed. Something moves between them. Memory? Emotion? Identity?",
+            "Transfer explores the idea that who we are may not be as contained as we believe—and that a single interaction can alter more than we understand.",
+          ],
+        },
+      ],
+      finalNote: {
+        title: "Final Note",
+        paragraphs: [
+          "These films are intentionally restrained—built on atmosphere, performance, and concept rather than scale.",
+          "They are meant to be experienced, questioned, and interpreted— not fully explained.",
+        ],
+      },
+    },
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "Selected work",
     portfolioBlurb:
@@ -132,8 +180,9 @@ const en: Messages = {
     portfolioCta: "Full portfolio",
     aboutEyebrow: "About",
     aboutTitle: "Built around story first.",
-    aboutBody: `${site.name} develops independent features and shorts with a focus on pressure, character, and tone. The work moves between psychological thriller, grounded fantasy, and music-driven storytelling without losing a precise dramatic spine.`,
-    aboutRoles: `${site.person.name} — ${site.person.roles.map((r) => r.toLowerCase()).join(", ")}.`,
+    aboutBody:
+      "A Thousand Cuts Films develops independent features and shorts with a focus on pressure, character, and tone. The work moves between psychological thriller, grounded fantasy, and music-driven storytelling without losing a precise dramatic spine.",
+    aboutRoles: "Leigh Akin — producer, director, writer.",
     aboutCta: "More about us",
     contactEyebrow: "Contact",
     contactTitle: "Let's talk.",
@@ -203,19 +252,66 @@ const fr: Messages = {
     portfolio: "Portfolio",
     about: "À propos",
     contact: "Contact",
+    copyrightName: "A Thousand Cuts Films",
   },
   home: {
     heroLine1: "Cinéma indépendant",
     heroLine2: "5 Shorts",
     heroLang: "fr",
-    lead: "Une production au service d’histoires qui restent sous la peau.",
-    bio: "Un travail ancré dans le personnage, avec un sens aigu de la tonalité et de la tension.",
-    rolesClause: "productrice, réalisatrice, scénariste",
-    indieHeading: "Longs métrages indépendants & courts",
-    indieP1:
-      "Nous développons et produisons des longs métrages indépendants pensés pour durer — des scénarios solides en salle de script, sur le plateau et au montage. Entre thriller psychologique, fantaisie ancrée et drame porté par la musique, tout repose sur une prémisse nette, une pression tenue et un sous-texte assumé pour que chaque scène mérite sa place.",
-    indieP2:
-      "Les courts restent eux aussi en circulation : pour affirmer une tonalité, servir de carte de visite aux collaboratrices et collaborateurs, et éprouver rythme et voix avant un projet plus large. Qu’il s’agisse d’une nuit de forêt, d’une comédie musicale de ville fluviale ou d’un couloir de château, la ligne directrice est la même — esprit indépendant, exigence artisanale, et des histoires qui vous suivent quand les lumières se rallument.",
+    aboutFilms: {
+      heading: "À propos des films",
+      intro: [
+        "Cinq courts métrages pour une seule idée, vue sous cinq angles :",
+        "Que se passe-t-il lorsque le réel cesse de se conduire comme nous l’attendons ?",
+        "Chaque histoire part du sol — lieux familiers, émotions reconnaissables — avant de glisser vers l’incertain, le surréel ou l’impossible silencieux. Pas d’explosions, pas de spectacle gratuit. La tension vit dans l’immobilité, dans ce qui est suggéré, dans ce qui devrait avoir un sens… et n’en a pas.",
+        "Ce programme est pensé comme minimal, délibéré, et dérangeant d’une façon qui reste.",
+      ],
+      films: [
+        {
+          title: "The Silent Room",
+          paragraphs: [
+            "Une femme retrouve une pièce qui refuse de reconnaître sa présence. Le temps se fissure. Le son disparaît. La question devient inévitable : si le monde cesse de vous répondre… existe-t-on encore en son sein ?",
+            "Une étude de l’isolement, de la perception, et de la ligne fragile entre absence et effacement.",
+          ],
+        },
+        {
+          title: "Ascent",
+          paragraphs: [
+            "Les ballons montent. Sans effort. Avec beauté. Inéluctablement. Jusqu’à ce qu’ils ne montent plus.",
+            "Par le mouvement et le milieu, Ascent suit l’arc de l’élévation à l’effondrement — sans finir en spectacle, mais dans un silence après coup. Une méditation sur l’impermanence et l’illusion d’un élan toujours vers le haut.",
+          ],
+        },
+        {
+          title: "The 10th Door",
+          paragraphs: [
+            "Une descente philosophique déguisée en ascension. Un voyage à travers les couches du réel — espace, temps, identité, et au-delà — jusqu’à ce qu’il ne reste plus rien à transcender.",
+            "Au seuil de la dernière « porte », le film affronte un paradoxe : ce qui se trouve au-delà de tout… n’est peut-être rien.",
+          ],
+        },
+        {
+          title: "Deep Pockets",
+          paragraphs: [
+            "Une fouille de routine devient un événement impossible. Des preuves sans limites. Une logique sans prise.",
+            "Lorsque l’autorité peine à nommer ce qu’elle voit, la question glisse du droit au langage : comment mesurer ce qui n’a pas de fin ?",
+            "Une fable absurde et sombre sur des systèmes qui cèdent sous le poids de l’inexplicable.",
+          ],
+        },
+        {
+          title: "Transfer",
+          paragraphs: [
+            "Un instant passe entre deux personnes — simple, ordinaire, à peine remarqué. Quelque chose circule. Mémoire ? Émotion ? Identité ?",
+            "Transfer explore l’idée que nous ne sommes peut-être pas aussi clos que nous le croyons — et qu’un seul échange peut en déplacer plus que nous ne le comprendrons.",
+          ],
+        },
+      ],
+      finalNote: {
+        title: "Note finale",
+        paragraphs: [
+          "Ces films sont volontairement sobres — fondés sur l’atmosphère, le jeu et le concept plutôt que sur l’échelle.",
+          "Ils se veulent vécus, questionnés, interprétés — jamais entièrement expliqués.",
+        ],
+      },
+    },
     portfolioEyebrow: "Portfolio",
     portfolioTitle: "Travaux choisis",
     portfolioBlurb:
@@ -223,8 +319,9 @@ const fr: Messages = {
     portfolioCta: "Portfolio complet",
     aboutEyebrow: "À propos",
     aboutTitle: "L’histoire d’abord.",
-    aboutBody: `${site.name} développe des longs métrages et des courts indépendants en mettant l’accent sur la pression dramatique, le personnage et la tonalité. Le travail navigue entre thriller psychologique, fantaisie ancrée et récit porté par la musique, sans jamais perdre une colonne vertébrale dramatique précise.`,
-    aboutRoles: `${site.person.name} — productrice, réalisatrice, scénariste.`,
+    aboutBody:
+      "A Thousand Cuts Films développe des longs métrages et des courts indépendants en mettant l’accent sur la pression dramatique, le personnage et la tonalité. Le travail navigue entre thriller psychologique, fantaisie ancrée et récit porté par la musique, sans jamais perdre une colonne vertébrale dramatique précise.",
+    aboutRoles: "Leigh Akin — productrice, réalisatrice, scénariste.",
     aboutCta: "En savoir plus",
     contactEyebrow: "Contact",
     contactTitle: "Parlons-en.",

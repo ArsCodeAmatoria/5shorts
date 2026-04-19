@@ -1,7 +1,7 @@
 export const site = {
   name: "5 Shorts",
   tagline: "Independent film production",
-  email: "5shortsfilms@gmail.com",
+  email: "1000cutsfilms@gmail.com",
   location: "British Columbia, Canada",
   person: {
     name: "Leigh Akin",
