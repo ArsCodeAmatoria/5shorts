@@ -1,5 +1,7 @@
+import { scriptBundle } from "./bundle"
+
 /** Full screenplay text for The Silent Room (English). */
-export const silentRoomScript = `THE SILENT ROOM
+export const silentRoomScript = scriptBundle(`THE SILENT ROOM
 
 Short Film Script
 Genre: Psychological drama / horror
@@ -443,4 +445,4 @@ CUT TO BLACK.
 
 Silence.
 
-END.`
+END.`)

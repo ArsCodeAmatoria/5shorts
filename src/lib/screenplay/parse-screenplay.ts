@@ -19,6 +19,20 @@ export type ParseConfig = {
   secondActOnHeading: (trimmedLine: string) => boolean
 }
 
+/** Replace act nav labels for the current locale; parsing rules unchanged. */
+export function localizeParseConfig(
+  config: ParseConfig,
+  actLabels: [string, string]
+): ParseConfig {
+  return {
+    ...config,
+    acts: [
+      { id: "act-1", label: actLabels[0] },
+      { id: "act-2", label: actLabels[1] },
+    ],
+  }
+}
+
 export const transferParseConfig: ParseConfig = {
   acts: [
     { id: "act-1", label: "Act I — The alley" },

@@ -1,4 +1,5 @@
 import type { Locale } from "./config"
+import type { ScriptSlug } from "@/lib/script-routes"
 import { site } from "@/lib/site"
 
 type Messages = {
@@ -76,6 +77,14 @@ type Messages = {
     title: string
     subtitle: string
   }
+  /** Screenplay reader: intro line + sidebar act labels per film. */
+  scriptsPage: {
+    screenplayIntro: string
+    actsNav: string
+    scenesNav: string
+    navAria: string
+  }
+  scriptsActs: Record<ScriptSlug, { act1: string; act2: string }>
   portfolioDescriptions: Record<string, string>
 }
 
@@ -212,6 +221,34 @@ const en: Messages = {
     title: "Selected projects",
     subtitle:
       "Each card opens the script page for that short (full text where available).",
+  },
+  scriptsPage: {
+    screenplayIntro: "Short film script — read below.",
+    actsNav: "Acts",
+    scenesNav: "Scenes",
+    navAria: "Acts and scenes",
+  },
+  scriptsActs: {
+    "the-10th-door": {
+      act1: "Act I — The door",
+      act2: "Act II — Beyond",
+    },
+    "the-silent-room": {
+      act1: "Act I — The facility",
+      act2: "Act II — The room",
+    },
+    ascent: {
+      act1: "Act I — The ground",
+      act2: "Act II — The rise",
+    },
+    transfer: {
+      act1: "Act I — The alley",
+      act2: "Act II — The bus",
+    },
+    "deep-pockets": {
+      act1: "Act I — The stop",
+      act2: "Act II — The court",
+    },
   },
   portfolioDescriptions: Object.fromEntries(
     site.portfolio.map((p) => [p.href, p.description])
@@ -351,6 +388,35 @@ const fr: Messages = {
     title: "Projets sélectionnés",
     subtitle:
       "Chaque fiche ouvre la page scénario du court (texte intégral lorsqu’il est disponible).",
+  },
+  scriptsPage: {
+    screenplayIntro:
+      "Scénario du court métrage — texte intégral ci-dessous (anglais).",
+    actsNav: "Actes",
+    scenesNav: "Scènes",
+    navAria: "Actes et scènes",
+  },
+  scriptsActs: {
+    "the-10th-door": {
+      act1: "Acte I — La porte",
+      act2: "Acte II — Au-delà",
+    },
+    "the-silent-room": {
+      act1: "Acte I — Le lieu",
+      act2: "Acte II — La pièce",
+    },
+    ascent: {
+      act1: "Acte I — Le sol",
+      act2: "Acte II — L’élévation",
+    },
+    transfer: {
+      act1: "Acte I — La ruelle",
+      act2: "Acte II — Le bus",
+    },
+    "deep-pockets": {
+      act1: "Acte I — Le contrôle",
+      act2: "Acte II — Le tribunal",
+    },
   },
   portfolioDescriptions: {
     "/scripts/the-10th-door":

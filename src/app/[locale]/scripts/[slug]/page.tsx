@@ -12,11 +12,32 @@ import { getDictionary } from "@/i18n/dictionary"
 import {
   ascentParseConfig,
   deepPocketsParseConfig,
+  localizeParseConfig,
   silentRoomParseConfig,
   the10thDoorParseConfig,
   transferParseConfig,
+  type ParseConfig,
 } from "@/lib/screenplay/parse-screenplay"
-import { isScriptSlug, scriptTitle, SCRIPT_SLUGS } from "@/lib/script-routes"
+import {
+  isScriptSlug,
+  scriptDisplayTitle,
+  SCRIPT_SLUGS,
+  type ScriptSlug,
+} from "@/lib/script-routes"
+
+const SCRIPT_MODULES: Record<
+  ScriptSlug,
+  {
+    raw: Record<Locale, string>
+    base: ParseConfig
+  }
+> = {
+  "the-10th-door": { raw: the10thDoorScript, base: the10thDoorParseConfig },
+  "the-silent-room": { raw: silentRoomScript, base: silentRoomParseConfig },
+  ascent: { raw: ascentScript, base: ascentParseConfig },
+  transfer: { raw: transferScript, base: transferParseConfig },
+  "deep-pockets": { raw: deepPocketsScript, base: deepPocketsParseConfig },
+}
 
 export function generateStaticParams() {
   const locales = ["en", "fr"] as const
@@ -33,7 +54,7 @@ export async function generateMetadata({
   const { locale: raw, slug } = await params
   if (!isLocale(raw) || !isScriptSlug(slug)) return {}
   const dict = getDictionary(raw)
-  const name = scriptTitle(slug)
+  const name = scriptDisplayTitle(slug, raw)
   return {
     title: `${name} — ${dict.nav.portfolio}`,
     description: dict.metadata.portfolioDescription,
@@ -50,70 +71,20 @@ export default async function ScriptPage({
   const locale: Locale = raw
   if (!isScriptSlug(slug)) notFound()
 
-  if (slug === "the-10th-door") {
-    return (
-      <main id="main" className="flex-1">
-        <ScreenplayView
-          raw={the10thDoorScript}
-          locale={locale}
-          title="The 10th Door"
-          parseConfig={the10thDoorParseConfig}
-        />
-      </main>
-    )
-  }
+  const dict = getDictionary(locale)
+  const mod = SCRIPT_MODULES[slug]
+  const acts = dict.scriptsActs[slug]
+  const parseConfig = localizeParseConfig(mod.base, [acts.act1, acts.act2])
 
-  if (slug === "transfer") {
-    return (
-      <main id="main" className="flex-1">
-        <ScreenplayView
-          raw={transferScript}
-          locale={locale}
-          title="Transfer"
-          parseConfig={transferParseConfig}
-        />
-      </main>
-    )
-  }
-
-  if (slug === "the-silent-room") {
-    return (
-      <main id="main" className="flex-1">
-        <ScreenplayView
-          raw={silentRoomScript}
-          locale={locale}
-          title="The Silent Room"
-          parseConfig={silentRoomParseConfig}
-        />
-      </main>
-    )
-  }
-
-  if (slug === "ascent") {
-    return (
-      <main id="main" className="flex-1">
-        <ScreenplayView
-          raw={ascentScript}
-          locale={locale}
-          title="Ascent"
-          parseConfig={ascentParseConfig}
-        />
-      </main>
-    )
-  }
-
-  if (slug === "deep-pockets") {
-    return (
-      <main id="main" className="flex-1">
-        <ScreenplayView
-          raw={deepPocketsScript}
-          locale={locale}
-          title="Deep Pockets"
-          parseConfig={deepPocketsParseConfig}
-        />
-      </main>
-    )
-  }
-
-  notFound()
+  return (
+    <main id="main" className="flex-1">
+      <ScreenplayView
+        raw={mod.raw[locale]}
+        locale={locale}
+        title={scriptDisplayTitle(slug, locale)}
+        parseConfig={parseConfig}
+        scriptsPage={dict.scriptsPage}
+      />
+    </main>
+  )
 }

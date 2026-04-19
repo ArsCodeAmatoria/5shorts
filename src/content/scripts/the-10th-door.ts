@@ -1,5 +1,7 @@
+import { scriptBundle } from "./bundle"
+
 /** The 10th Door — narration over visuals. */
-export const the10thDoorScript = `THE 10TH DOOR
+export const the10thDoorScript = scriptBundle(`THE 10TH DOOR
 A short film
 
 Written for narration over visuals
@@ -688,4 +690,4 @@ NARRATOR (V.O.)
 
 And not even that.
 
-FADE OUT.`
+FADE OUT.`)

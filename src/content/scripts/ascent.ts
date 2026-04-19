@@ -1,5 +1,7 @@
+import { scriptBundle } from "./bundle"
+
 /** Opening sequence script — “The Ground” (Ascent). */
-export const ascentScript = `ASCENT
+export const ascentScript = scriptBundle(`ASCENT
 
 Opening Sequence Script – "The Ground"
 
@@ -159,4 +161,4 @@ Only a few feet.
 
 But enough.
 
-CUT TO: SKY TRANSITION (NEXT SEQUENCE)`
+CUT TO: SKY TRANSITION (NEXT SEQUENCE)`)

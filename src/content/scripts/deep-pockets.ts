@@ -1,5 +1,7 @@
+import { scriptBundle } from "./bundle"
+
 /** Deep Pockets — full script. */
-export const deepPocketsScript = `DEEP POCKETS
+export const deepPocketsScript = scriptBundle(`DEEP POCKETS
 
 Written by Leigh Akin
 
@@ -322,4 +324,4 @@ Weight.
 A faint smile.
 
 CUT TO BLACK.
-END`
+END`)

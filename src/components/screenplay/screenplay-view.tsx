@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import type { Locale } from "@/i18n/config"
+import type { Messages } from "@/i18n/dictionary"
 import { getDictionary } from "@/i18n/dictionary"
 import {
   parseScreenplay,
@@ -34,18 +35,16 @@ export function ScreenplayView({
   locale,
   title,
   parseConfig,
+  scriptsPage,
 }: {
   raw: string
   locale: Locale
   title: string
   parseConfig: ParseConfig
+  scriptsPage: Messages["scriptsPage"]
 }) {
   const dict = getDictionary(locale)
   const home = withLocale(locale, "/")
-  const intro =
-    locale === "fr"
-      ? "Scénario court — version anglaise."
-      : "Short film script — read below."
 
   const { acts, scenes, lines } = parseScreenplay(raw, parseConfig)
   const annotated = annotateSceneAnchors(lines)
@@ -55,13 +54,11 @@ export function ScreenplayView({
       <aside className="lg:sticky lg:top-24 lg:h-fit lg:w-56 lg:shrink-0 xl:w-64">
         <nav
           className="space-y-8 text-sm"
-          aria-label={
-            locale === "fr" ? "Actes et scènes" : "Acts and scenes"
-          }
+          aria-label={scriptsPage.navAria}
         >
           <div>
             <p className="mb-3 font-bold uppercase tracking-[0.2em] text-foreground">
-              {locale === "fr" ? "Actes" : "Acts"}
+              {scriptsPage.actsNav}
             </p>
             <ul className="space-y-2">
               {acts.map((a) => (
@@ -78,7 +75,7 @@ export function ScreenplayView({
           </div>
           <div>
             <p className="mb-3 font-bold uppercase tracking-[0.2em] text-foreground">
-              {locale === "fr" ? "Scènes" : "Scenes"}
+              {scriptsPage.scenesNav}
             </p>
             <ul className="max-h-[min(60vh,28rem)] space-y-1.5 overflow-y-auto pr-1 text-left">
               {scenes.map((s) => (
@@ -106,7 +103,7 @@ export function ScreenplayView({
         <h1 className="mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
           {title}
         </h1>
-        <p className="mt-2 text-muted-foreground">{intro}</p>
+        <p className="mt-2 text-muted-foreground">{scriptsPage.screenplayIntro}</p>
 
         <div className="mx-auto mt-12 max-w-2xl space-y-1 text-base leading-relaxed sm:text-[15px]">
           {annotated.map(({ line, firstOfAct }, idx) => (

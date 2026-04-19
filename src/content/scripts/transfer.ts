@@ -1,5 +1,7 @@
+import { scriptBundle } from "./bundle"
+
 /** Full screenplay text for Transfer (English). */
-export const transferScript = `TRANSFER
+export const transferScript = scriptBundle(`TRANSFER
 
 Short Film Script
 Genre: Psychological Thriller
@@ -385,4 +387,4 @@ Almost smiles.
 Or maybe not.
 
 CUT TO BLACK
-END`
+END`)
